@@ -8,7 +8,7 @@ import type { Project } from "@/data/portfolio";
 describe("SectionHeading", () => {
   it("renders title", () => {
     render(<SectionHeading title="Test Title" />);
-    expect(screen.getByText("Test Title")).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: /Test Title/ })).toBeInTheDocument();
   });
 
   it("renders subtitle when provided", () => {

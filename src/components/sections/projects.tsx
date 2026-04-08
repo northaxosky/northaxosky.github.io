@@ -8,7 +8,7 @@ export function Projects() {
   const other = projects.filter((p) => !p.featured);
 
   return (
-    <section id="projects" className="mx-auto max-w-6xl px-6 py-24">
+    <section id="projects" className="mx-auto max-w-6xl px-6 py-28">
       <FadeIn>
         <SectionHeading
           title="Projects"
@@ -17,21 +17,35 @@ export function Projects() {
       </FadeIn>
 
       {/* Featured projects */}
-      <div className="mb-8 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-        {featured.map((project, index) => (
-          <FadeIn key={project.title} delay={index * 100}>
-            <ProjectCard project={project} />
-          </FadeIn>
-        ))}
+      <div className="mb-12">
+        <FadeIn>
+          <p className="mb-6 text-xs font-mono uppercase tracking-widest text-accent/60">
+            Featured
+          </p>
+        </FadeIn>
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {featured.map((project, index) => (
+            <FadeIn key={project.title} delay={index * 100}>
+              <ProjectCard project={project} />
+            </FadeIn>
+          ))}
+        </div>
       </div>
 
       {/* Other projects */}
-      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-        {other.map((project, index) => (
-          <FadeIn key={project.title} delay={index * 100}>
-            <ProjectCard project={project} />
-          </FadeIn>
-        ))}
+      <div>
+        <FadeIn>
+          <p className="mb-6 text-xs font-mono uppercase tracking-widest text-muted/40">
+            Other
+          </p>
+        </FadeIn>
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {other.map((project, index) => (
+            <FadeIn key={project.title} delay={index * 100}>
+              <ProjectCard project={project} />
+            </FadeIn>
+          ))}
+        </div>
       </div>
     </section>
   );

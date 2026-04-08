@@ -5,17 +5,17 @@ import { GitHubIcon, LinkedInIcon, XIcon } from "@/components/icons";
 
 const socialLinks = [
   {
-    label: "GitHub",
+    label: "github",
     href: profile.social.github,
     icon: GitHubIcon,
   },
   {
-    label: "LinkedIn",
+    label: "linkedin",
     href: profile.social.linkedin,
     icon: LinkedInIcon,
   },
   {
-    label: "X / Twitter",
+    label: "x_twitter",
     href: profile.social.twitter,
     icon: XIcon,
   },
@@ -23,7 +23,7 @@ const socialLinks = [
 
 export function Contact() {
   return (
-    <section id="contact" className="mx-auto max-w-6xl px-6 py-24">
+    <section id="contact" className="mx-auto max-w-6xl px-6 py-28">
       <FadeIn>
         <SectionHeading
           title="Contact"
@@ -39,14 +39,14 @@ export function Contact() {
               href={link.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="group inline-flex items-center gap-3 rounded-xl border border-card-border bg-card px-6 py-4 transition-all hover:border-accent/40 hover:bg-card/80"
+              className="group inline-flex items-center gap-3 rounded-2xl glass px-6 py-4 transition-all duration-300 hover:bg-glass-highlight glow-accent-hover shimmer-border hover:translate-y-[-2px]"
             >
               <link.icon
                 size={20}
                 className="text-muted transition-colors group-hover:text-accent"
               />
-              <span className="text-sm font-medium text-foreground">
-                {link.label}
+              <span className="text-sm font-mono font-medium text-foreground">
+                <span className="text-accent/40">_</span>{link.label}
               </span>
             </a>
           ))}
@@ -55,13 +55,13 @@ export function Contact() {
             href={profile.social.nexusmods}
             target="_blank"
             rel="noopener noreferrer"
-            className="group inline-flex items-center gap-3 rounded-xl border border-card-border bg-card px-6 py-4 transition-all hover:border-accent/40 hover:bg-card/80"
+            className="group inline-flex items-center gap-3 rounded-2xl glass px-6 py-4 transition-all duration-300 hover:bg-glass-highlight glow-accent-hover shimmer-border hover:translate-y-[-2px]"
           >
-            <span className="text-sm font-bold text-muted transition-colors group-hover:text-accent">
+            <span className="text-sm font-bold font-mono text-muted transition-colors group-hover:text-accent">
               NM
             </span>
-            <span className="text-sm font-medium text-foreground">
-              NexusMods
+            <span className="text-sm font-mono font-medium text-foreground">
+              <span className="text-accent/40">_</span>nexusmods
             </span>
           </a>
         </div>

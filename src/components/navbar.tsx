@@ -24,36 +24,36 @@ export function Navbar() {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         scrolled
-          ? "bg-background/80 backdrop-blur-md border-b border-card-border"
+          ? "glass border-b border-glass-border shadow-[0_4px_30px_rgba(0,0,0,0.3)]"
           : "bg-transparent"
       }`}
     >
       <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
         <a
           href="#"
-          className="text-lg font-bold tracking-tight text-foreground hover:text-accent transition-colors"
+          className="text-base font-mono font-bold tracking-tight text-foreground hover:text-accent transition-colors"
         >
-          {profile.name}
+          <span className="text-accent/50">~/</span>{profile.name.toLowerCase().replace(" ", "_")}
         </a>
 
         {/* Desktop links */}
-        <div className="hidden items-center gap-8 md:flex">
+        <div className="hidden items-center gap-1 md:flex">
           {navLinks.map((link) => (
             <a
               key={link.href}
               href={link.href}
-              className="text-sm text-muted transition-colors hover:text-foreground"
+              className="rounded-full px-4 py-2 text-sm font-mono text-muted transition-all hover:text-foreground hover:bg-glass-highlight"
             >
-              {link.label}
+              <span className="text-accent/40">_</span>{link.label.toLowerCase()}
             </a>
           ))}
         </div>
 
         {/* Mobile toggle */}
         <button
-          className="text-muted md:hidden"
+          className="text-muted hover:text-foreground transition-colors md:hidden"
           onClick={() => setMobileOpen(!mobileOpen)}
           aria-label="Toggle menu"
           aria-expanded={mobileOpen}
@@ -63,20 +63,24 @@ export function Navbar() {
       </div>
 
       {/* Mobile menu */}
-      {mobileOpen && (
-        <div className="border-t border-card-border bg-background/95 backdrop-blur-md px-6 py-4 md:hidden">
+      <div
+        className={`overflow-hidden transition-all duration-300 ease-out md:hidden ${
+          mobileOpen ? "max-h-80 opacity-100" : "max-h-0 opacity-0"
+        }`}
+      >
+        <div className="glass border-t border-glass-border px-6 py-4">
           {navLinks.map((link) => (
             <a
               key={link.href}
               href={link.href}
-              className="block py-3 text-sm text-muted transition-colors hover:text-foreground"
+              className="block rounded-lg py-3 px-4 text-sm font-mono text-muted transition-all hover:text-foreground hover:bg-glass-highlight"
               onClick={() => setMobileOpen(false)}
             >
-              {link.label}
+              <span className="text-accent/40">_</span>{link.label.toLowerCase()}
             </a>
           ))}
         </div>
-      )}
+      </div>
     </nav>
   );
 }
