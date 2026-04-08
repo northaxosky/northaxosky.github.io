@@ -37,6 +37,9 @@ export const metadata: Metadata = {
     description:
       "Portfolio of Kuzey Gök — SDE at Microsoft. Web apps, dev tools, and game mods.",
   },
+  icons: {
+    icon: "/icon.svg",
+  },
   robots: {
     index: true,
     follow: true,
