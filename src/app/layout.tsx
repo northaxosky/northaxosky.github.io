@@ -30,11 +30,20 @@ export const metadata: Metadata = {
     description,
     type: "website",
     url: "https://northaxosky.github.io",
+    images: [
+      {
+        url: "/og.png",
+        width: 1200,
+        height: 630,
+        alt: "Kuzey Gök — Software Engineer",
+      },
+    ],
   },
   twitter: {
-    card: "summary",
+    card: "summary_large_image",
     title: "Kuzey Gök — Software Engineer",
     description,
+    images: ["/og.png"],
   },
   icons: {
     icon: "/icon.svg",
@@ -56,6 +65,12 @@ export default function RootLayout({
       className={`${archivo.variable} ${jetbrainsMono.variable} antialiased`}
     >
       <body className="min-h-screen bg-bg text-ink font-sans">
+        <a
+          href="#main"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[70] focus:bg-accent focus:px-4 focus:py-2 focus:font-medium focus:text-bg"
+        >
+          Skip to content
+        </a>
         <noscript>
           <style>{`[data-reveal]{opacity:1 !important;transform:none !important;}`}</style>
         </noscript>
