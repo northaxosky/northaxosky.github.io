@@ -4,32 +4,32 @@ import { SectionHeading } from "@/components/section-heading";
 
 export function Skills() {
   return (
-    <section id="skills" className="mx-auto max-w-6xl px-6 py-28">
+    <section id="stack" className="mx-auto max-w-5xl px-6 py-24 sm:py-28">
       <FadeIn>
-        <SectionHeading title="Skills" subtitle="Technologies I work with." />
+        <SectionHeading title="Stack" subtitle="Technologies I reach for." />
       </FadeIn>
 
-      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+      <dl className="divide-y divide-line border-y border-line">
         {skillCategories.map((category, index) => (
-          <FadeIn key={category.name} delay={index * 100}>
-            <div className="rounded-2xl glass p-6 transition-all duration-300 hover:bg-glass-highlight glow-accent-hover">
-              <h3 className="mb-5 text-xs font-mono font-semibold uppercase tracking-widest text-accent">
-                <span className="text-accent/40">_</span>{category.name.toLowerCase().replace(/\s+&\s+/g, "_")}
-              </h3>
-              <div className="flex flex-wrap gap-2">
+          <FadeIn key={category.name} delay={index * 80}>
+            <div className="grid gap-3 py-6 sm:grid-cols-[200px_1fr] sm:gap-8">
+              <dt className="font-mono text-sm font-medium text-accent">
+                {category.name}
+              </dt>
+              <dd className="flex flex-wrap gap-2">
                 {category.skills.map((skill) => (
                   <span
                     key={skill}
-                    className="rounded-lg bg-white/[0.04] border border-white/[0.06] px-3 py-1.5 text-sm font-mono text-muted transition-colors hover:text-accent hover:border-accent/20 hover:bg-accent/5"
+                    className="border border-line px-3 py-1.5 font-mono text-sm text-muted transition-colors hover:border-accent/40 hover:text-ink"
                   >
                     {skill}
                   </span>
                 ))}
-              </div>
+              </dd>
             </div>
           </FadeIn>
         ))}
-      </div>
+      </dl>
     </section>
   );
 }

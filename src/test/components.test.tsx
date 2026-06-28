@@ -1,45 +1,52 @@
 import { describe, it, expect } from "vitest";
 import { render, screen } from "@testing-library/react";
 import { SectionHeading } from "@/components/section-heading";
-import { ProjectCard } from "@/components/project-card";
+import { ProjectRow } from "@/components/project-row";
 import { Footer } from "@/components/footer";
 import type { Project } from "@/data/portfolio";
 
 describe("SectionHeading", () => {
   it("renders title", () => {
     render(<SectionHeading title="Test Title" />);
-    expect(screen.getByRole("heading", { name: /Test Title/ })).toBeInTheDocument();
+    expect(
+      screen.getByRole("heading", { name: /Test Title/ })
+    ).toBeInTheDocument();
   });
 
   it("renders subtitle when provided", () => {
     render(<SectionHeading title="Title" subtitle="Subtitle text" />);
     expect(screen.getByText("Subtitle text")).toBeInTheDocument();
   });
+
+  it("renders marker when provided", () => {
+    render(<SectionHeading title="Title" marker="10 projects" />);
+    expect(screen.getByText("10 projects")).toBeInTheDocument();
+  });
 });
 
-describe("ProjectCard", () => {
+describe("ProjectRow", () => {
   const mockProject: Project = {
     title: "Test Project",
-    description: "A test project description",
-    tags: ["TypeScript", "React"],
+    summary: "A test project summary",
+    tags: ["Rust", "TypeScript"],
     github: "https://github.com/test/test",
-    featured: true,
+    lane: "Systems & Tooling",
+    stars: 7,
   };
 
-  it("renders project title and description", () => {
-    render(<ProjectCard project={mockProject} />);
+  it("renders title and summary", () => {
+    render(<ProjectRow project={mockProject} />);
     expect(screen.getByText("Test Project")).toBeInTheDocument();
-    expect(screen.getByText("A test project description")).toBeInTheDocument();
+    expect(screen.getByText("A test project summary")).toBeInTheDocument();
   });
 
-  it("renders all tags", () => {
-    render(<ProjectCard project={mockProject} />);
-    expect(screen.getByText("TypeScript")).toBeInTheDocument();
-    expect(screen.getByText("React")).toBeInTheDocument();
+  it("renders joined tags", () => {
+    render(<ProjectRow project={mockProject} />);
+    expect(screen.getByText("Rust · TypeScript")).toBeInTheDocument();
   });
 
-  it("links to github", () => {
-    render(<ProjectCard project={mockProject} />);
+  it("links to github in a new tab", () => {
+    render(<ProjectRow project={mockProject} />);
     const link = screen.getByRole("link");
     expect(link).toHaveAttribute("href", "https://github.com/test/test");
     expect(link).toHaveAttribute("target", "_blank");

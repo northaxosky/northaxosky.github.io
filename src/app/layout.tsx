@@ -1,41 +1,38 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import { JetBrains_Mono } from "next/font/google";
+import { Archivo, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const archivo = Archivo({
+  variable: "--font-archivo",
   subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800", "900"],
+  display: "swap",
 });
 
 const jetbrainsMono = JetBrains_Mono({
   variable: "--font-jb-mono",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
+  weight: ["400", "500", "600", "700"],
+  display: "swap",
 });
+
+const description =
+  "Kuzey Gök — software engineer at Microsoft. Rust systems & tooling, machine learning from scratch, a C++ game engine, and Fallout 4 reverse-engineering.";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://northaxosky.github.io"),
-  title: "Kuzey Gök — Software Development Engineer",
-  description:
-    "Portfolio of Kuzey Gök — SDE at Microsoft. Web apps, dev tools, and game mods.",
+  title: "Kuzey Gök — Software Engineer",
+  description,
   openGraph: {
-    title: "Kuzey Gök — Software Development Engineer",
-    description:
-      "Portfolio of Kuzey Gök — SDE at Microsoft. Web apps, dev tools, and game mods.",
+    title: "Kuzey Gök — Software Engineer",
+    description,
     type: "website",
     url: "https://northaxosky.github.io",
   },
   twitter: {
     card: "summary",
-    title: "Kuzey Gök — Software Development Engineer",
-    description:
-      "Portfolio of Kuzey Gök — SDE at Microsoft. Web apps, dev tools, and game mods.",
+    title: "Kuzey Gök — Software Engineer",
+    description,
   },
   icons: {
     icon: "/icon.svg",
@@ -54,10 +51,11 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} ${jetbrainsMono.variable} antialiased`}
+      className={`${archivo.variable} ${jetbrainsMono.variable} antialiased`}
     >
-      <body className="min-h-screen bg-background text-foreground font-sans">
-        <div className="bg-orbs" aria-hidden="true" />
+      <body className="min-h-screen bg-bg text-ink font-sans">
+        <div className="grid-bg" aria-hidden="true" />
+        <div className="accent-seam" aria-hidden="true" />
         <div className="relative z-10">{children}</div>
       </body>
     </html>

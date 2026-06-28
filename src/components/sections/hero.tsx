@@ -1,101 +1,108 @@
-"use client";
-
 import { profile } from "@/data/portfolio";
-import { ArrowDown } from "lucide-react";
-import { useEffect, useState } from "react";
+
+const spec: { label: string; value: string }[] = [
+  { label: "ROLE", value: "SDE · Microsoft" },
+  { label: "BASED", value: profile.location },
+  { label: "FOCUS", value: "systems · ML · game tech" },
+  { label: "STACK", value: "Rust · C++ · TS · Python" },
+  { label: "NOW", value: "Overseer + Sky-AI" },
+];
 
 export function Hero() {
-  const [loaded, setLoaded] = useState(false);
-
-  useEffect(() => {
-    const timeout = setTimeout(() => setLoaded(true), 100);
-    return () => clearTimeout(timeout);
-  }, []);
-
   return (
-    <section className="relative flex min-h-screen flex-col items-center justify-center px-6 text-center overflow-hidden">
-      {/* Ambient glow behind heading */}
-      <div className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[600px] bg-[radial-gradient(ellipse_at_center,_rgba(0,220,130,0.1)_0%,_rgba(0,220,130,0.04)_40%,_transparent_70%)]" />
+    <section
+      id="top"
+      className="relative mx-auto flex min-h-screen max-w-5xl flex-col justify-center px-6 pb-16 pt-28"
+    >
+      <div className="grid items-center gap-12 lg:grid-cols-[1.45fr_1fr]">
+        {/* Left — statement */}
+        <div>
+          <p
+            className="animate-rise font-mono text-sm text-faint"
+            style={{ animationDelay: "0ms" }}
+          >
+            <span className="text-accent">Kuzey Gök</span> · Software Engineer
+          </p>
 
-      <div className="relative z-10 max-w-4xl">
-        {/* Role badge */}
-        <div
-          className={`transition-all duration-700 ease-out ${
-            loaded
-              ? "opacity-100 translate-y-0 blur-0"
-              : "opacity-0 translate-y-4 blur-sm"
-          }`}
-        >
-          <span className="inline-flex items-center gap-2 rounded-full glass px-5 py-2 text-xs font-mono uppercase tracking-widest text-accent">
-            <span className="h-1.5 w-1.5 rounded-full bg-accent animate-pulse" />
-            {profile.title} @ {profile.company}
-          </span>
+          <h1
+            className="animate-rise mt-6 font-display text-5xl font-black leading-[0.98] tracking-tight text-ink sm:text-6xl lg:text-7xl"
+            style={{ animationDelay: "80ms" }}
+          >
+            I build close to{" "}
+            <span className="text-accent">the metal</span>.
+          </h1>
+
+          <p
+            className="animate-rise mt-7 max-w-xl text-lg leading-relaxed text-muted"
+            style={{ animationDelay: "200ms" }}
+          >
+            Rust tooling, machine learning from scratch, a C++ game engine, and
+            years of reverse-engineering Fallout&nbsp;4.
+          </p>
+
+          <div
+            className="animate-rise mt-9 flex flex-wrap items-center gap-3"
+            style={{ animationDelay: "300ms" }}
+          >
+            <a
+              href="#work"
+              className="inline-flex h-11 items-center gap-2 bg-accent px-6 text-sm font-semibold text-bg transition-colors hover:bg-accent-bright"
+            >
+              View work
+              <span aria-hidden="true">→</span>
+            </a>
+            <a
+              href={profile.social.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex h-11 items-center gap-2 border border-line px-6 text-sm font-medium text-ink transition-colors hover:border-accent/60 hover:text-accent"
+            >
+              GitHub
+              <span aria-hidden="true">↗</span>
+            </a>
+          </div>
         </div>
 
-        {/* Name */}
-        <h1
-          className={`mt-8 font-mono text-5xl font-extrabold tracking-tight sm:text-7xl lg:text-8xl transition-all duration-1000 ease-out delay-200 ${
-            loaded
-              ? "opacity-100 translate-y-0 blur-0"
-              : "opacity-0 translate-y-6 blur-sm"
-          }`}
-        >
-          <span className="text-accent/40 font-normal">_</span>
-          <span className="text-gradient">{profile.name}</span>
-          <span className="text-accent cursor-blink">|</span>
-        </h1>
-
-        {/* Tagline */}
-        <p
-          className={`mx-auto mt-8 max-w-xl text-lg font-mono leading-relaxed text-muted sm:text-xl transition-all duration-700 ease-out delay-500 ${
-            loaded
-              ? "opacity-100 translate-y-0 blur-0"
-              : "opacity-0 translate-y-4 blur-sm"
-          }`}
-        >
-          {profile.tagline}
-        </p>
-
-        {/* CTA Buttons */}
+        {/* Right — spec panel */}
         <div
-          className={`mt-12 flex flex-col items-center gap-4 sm:flex-row sm:justify-center transition-all duration-700 ease-out delay-700 ${
-            loaded
-              ? "opacity-100 translate-y-0 blur-0"
-              : "opacity-0 translate-y-4 blur-sm"
-          }`}
+          className="animate-rise lg:justify-self-end"
+          style={{ animationDelay: "240ms" }}
         >
-          <a
-            href="#projects"
-            className="group relative inline-flex h-12 items-center rounded-full bg-accent px-8 text-sm font-mono font-medium text-background transition-all hover:bg-accent-hover hover:shadow-[0_0_30px_rgba(0,220,130,0.3)]"
-          >
-            ./view_projects
-            <span className="ml-2 transition-transform group-hover:translate-x-0.5">
-              &rarr;
-            </span>
-          </a>
-          <a
-            href="#contact"
-            className="inline-flex h-12 items-center rounded-full glass px-8 text-sm font-mono font-medium text-foreground transition-all hover:bg-glass-highlight glow-accent-hover"
-          >
-            ./get_in_touch
-          </a>
+          <div className="w-full max-w-sm border border-line bg-surface/40">
+            <div className="flex items-center justify-between border-b border-line px-4 py-2.5">
+              <span className="font-mono text-xs tracking-wider text-faint">
+                {"// spec"}
+              </span>
+              <span className="flex gap-1" aria-hidden="true">
+                <span className="h-1.5 w-1.5 bg-accent/80" />
+                <span className="h-1.5 w-1.5 bg-line-strong" />
+                <span className="h-1.5 w-1.5 bg-line-strong" />
+              </span>
+            </div>
+            <dl className="divide-y divide-line">
+              {spec.map((row) => (
+                <div
+                  key={row.label}
+                  className="flex items-baseline gap-4 px-4 py-3"
+                >
+                  <dt className="w-16 shrink-0 font-mono text-xs text-faint">
+                    {row.label}
+                  </dt>
+                  <dd className="font-mono text-sm text-ink">{row.value}</dd>
+                </div>
+              ))}
+            </dl>
+          </div>
         </div>
       </div>
 
-      {/* Scroll indicator */}
       <a
         href="#about"
-        className={`absolute bottom-10 text-muted transition-all hover:text-accent duration-700 delay-1000 ${
-          loaded ? "opacity-100" : "opacity-0"
-        }`}
+        className="animate-rise absolute bottom-8 left-1/2 hidden -translate-x-1/2 font-mono text-xs text-faint transition-colors hover:text-accent sm:block"
+        style={{ animationDelay: "500ms" }}
         aria-label="Scroll to about"
       >
-        <div className="flex flex-col items-center gap-2">
-          <span className="text-[10px] font-mono uppercase tracking-widest">
-            scroll
-          </span>
-          <ArrowDown size={16} className="animate-bounce" />
-        </div>
+        scroll ↓
       </a>
     </section>
   );

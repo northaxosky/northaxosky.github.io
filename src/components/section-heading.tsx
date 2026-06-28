@@ -1,23 +1,25 @@
 interface SectionHeadingProps {
   title: string;
   subtitle?: string;
+  marker?: string;
 }
 
-export function SectionHeading({ title, subtitle }: SectionHeadingProps) {
+export function SectionHeading({ title, subtitle, marker }: SectionHeadingProps) {
   return (
-    <div className="mb-16">
-      <div className="flex items-center gap-4 mb-4">
-        <div className="h-px w-8 bg-accent/50" />
-        <span className="text-xs font-mono uppercase tracking-widest text-accent">
-          _{title.toLowerCase()}
-        </span>
+    <header className="mb-12 sm:mb-16">
+      <div className="flex items-end justify-between gap-4 border-b border-line pb-4">
+        <h2 className="font-display text-3xl font-extrabold tracking-tight text-ink sm:text-4xl">
+          {title}
+        </h2>
+        {marker && (
+          <span className="tnum shrink-0 pb-1 font-mono text-xs text-faint">
+            {marker}
+          </span>
+        )}
       </div>
-      <h2 className="font-mono text-4xl font-bold tracking-tight text-foreground sm:text-5xl">
-        {title}<span className="text-accent">.</span>
-      </h2>
       {subtitle && (
-        <p className="mt-4 text-base font-mono text-muted">{subtitle}</p>
+        <p className="mt-4 max-w-2xl leading-relaxed text-muted">{subtitle}</p>
       )}
-    </div>
+    </header>
   );
 }

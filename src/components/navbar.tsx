@@ -1,82 +1,80 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { navLinks, profile } from "@/data/portfolio";
+import { navLinks } from "@/data/portfolio";
 import { Menu, X } from "lucide-react";
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
-  const [mobileOpen, setMobileOpen] = useState(false);
+  const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 50);
-    window.addEventListener("scroll", onScroll);
+    const onScroll = () => setScrolled(window.scrollY > 24);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   useEffect(() => {
-    const onKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Escape" && mobileOpen) setMobileOpen(false);
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setOpen(false);
     };
-    document.addEventListener("keydown", onKeyDown);
-    return () => document.removeEventListener("keydown", onKeyDown);
-  }, [mobileOpen]);
+    document.addEventListener("keydown", onKey);
+    return () => document.removeEventListener("keydown", onKey);
+  }, []);
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+      className={`fixed inset-x-0 top-0 z-50 border-b transition-colors duration-300 ${
         scrolled
-          ? "glass border-b border-glass-border shadow-[0_4px_30px_rgba(0,0,0,0.3)]"
-          : "bg-transparent"
+          ? "border-line bg-bg/90 backdrop-blur-sm"
+          : "border-transparent"
       }`}
     >
-      <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-        <a
-          href="#"
-          className="text-base font-mono font-bold tracking-tight text-foreground hover:text-accent transition-colors"
-        >
-          <span className="text-accent/50">~/</span>{profile.name.toLowerCase().replace(" ", "_")}
+      <div className="mx-auto flex h-16 max-w-5xl items-center justify-between px-6">
+        <a href="#" className="group inline-flex items-center gap-2.5" aria-label="Home">
+          <span className="h-2.5 w-2.5 bg-accent transition-transform duration-300 ease-out group-hover:rotate-45" />
+          <span className="font-display text-base font-bold tracking-tight text-ink">
+            Kuzey Gök
+          </span>
         </a>
 
-        {/* Desktop links */}
-        <div className="hidden items-center gap-1 md:flex">
+        <div className="hidden items-center gap-7 md:flex">
           {navLinks.map((link) => (
             <a
               key={link.href}
               href={link.href}
-              className="rounded-full px-4 py-2 text-sm font-mono text-muted transition-all hover:text-foreground hover:bg-glass-highlight"
+              className="font-mono text-sm text-muted transition-colors hover:text-ink"
             >
-              <span className="text-accent/40">_</span>{link.label.toLowerCase()}
+              {link.label.toLowerCase()}
             </a>
           ))}
         </div>
 
-        {/* Mobile toggle */}
         <button
-          className="text-muted hover:text-foreground transition-colors md:hidden"
-          onClick={() => setMobileOpen(!mobileOpen)}
+          className="text-muted transition-colors hover:text-ink md:hidden"
+          onClick={() => setOpen(!open)}
           aria-label="Toggle menu"
-          aria-expanded={mobileOpen}
+          aria-expanded={open}
         >
-          {mobileOpen ? <X size={24} /> : <Menu size={24} />}
+          {open ? <X size={22} /> : <Menu size={22} />}
         </button>
       </div>
 
-      {/* Mobile menu */}
       <div
-        className={`overflow-hidden transition-all duration-300 ease-out md:hidden ${
-          mobileOpen ? "max-h-80 opacity-100" : "max-h-0 opacity-0"
+        className={`overflow-hidden bg-bg/95 backdrop-blur-sm transition-all duration-300 ease-out md:hidden ${
+          open ? "max-h-72 border-b border-line opacity-100" : "max-h-0 opacity-0"
         }`}
       >
-        <div className="glass border-t border-glass-border px-6 py-4">
+        <div className="flex flex-col px-6 py-1">
           {navLinks.map((link) => (
             <a
               key={link.href}
               href={link.href}
-              className="block rounded-lg py-3 px-4 text-sm font-mono text-muted transition-all hover:text-foreground hover:bg-glass-highlight"
-              onClick={() => setMobileOpen(false)}
+              onClick={() => setOpen(false)}
+              className="border-b border-line/60 py-3 font-mono text-sm text-muted transition-colors last:border-0 hover:text-ink"
             >
-              <span className="text-accent/40">_</span>{link.label.toLowerCase()}
+              {link.label.toLowerCase()}
             </a>
           ))}
         </div>

@@ -5,6 +5,7 @@ import {
   projects,
   skillCategories,
   navLinks,
+  lanes,
 } from "@/data/portfolio";
 
 describe("portfolio data", () => {
@@ -13,7 +14,10 @@ describe("portfolio data", () => {
     expect(profile.title).toBeTruthy();
     expect(profile.company).toBeTruthy();
     expect(profile.tagline).toBeTruthy();
-    expect(profile.about).toBeTruthy();
+    expect(profile.about.length).toBeGreaterThan(0);
+    for (const paragraph of profile.about) {
+      expect(paragraph).toBeTruthy();
+    }
   });
 
   it("has all social links", () => {
@@ -23,11 +27,8 @@ describe("portfolio data", () => {
     expect(profile.social.nexusmods).toContain("nexusmods.com");
   });
 
-  it("has at least one experience entry", () => {
-    expect(experiences.length).toBeGreaterThan(0);
-  });
-
   it("each experience has required fields", () => {
+    expect(experiences.length).toBeGreaterThan(0);
     for (const exp of experiences) {
       expect(exp.title).toBeTruthy();
       expect(exp.company).toBeTruthy();
@@ -38,14 +39,16 @@ describe("portfolio data", () => {
   });
 
   it("has at least one featured project", () => {
-    const featured = projects.filter((p) => p.featured);
-    expect(featured.length).toBeGreaterThan(0);
+    expect(projects.filter((p) => p.featured).length).toBeGreaterThan(0);
   });
 
-  it("each project has a valid github link", () => {
+  it("each project is well-formed and lives in a known lane", () => {
     for (const project of projects) {
+      expect(project.title).toBeTruthy();
+      expect(project.summary).toBeTruthy();
       expect(project.github).toContain("github.com");
       expect(project.tags.length).toBeGreaterThan(0);
+      expect(lanes).toContain(project.lane);
     }
   });
 
