@@ -46,7 +46,7 @@ export const profile = {
     "I build close to the metal: Rust tooling, machine learning from scratch, and game engines.",
   about: [
     "I'm a software engineer at Microsoft. I studied computer science and interned twice at AWS before joining. Most of what I build, though, lives outside the day job.",
-    "I like working close to the metal: developer tooling and CLIs in Rust, machine-learning systems written from scratch, a small C++ game engine, and years of reverse-engineering and modding Fallout 4. Most projects start from a practical itch: make something faster, automate a workflow, or learn a system deeply enough to bend it.",
+    "I like working close to the metal: developer tooling and CLIs in Rust, machine-learning systems written from scratch, a small C++ game engine, and reverse-engineering and modding Fallout 4. Most projects start from a practical itch: make something faster, automate a workflow, or learn a system deeply enough to bend it.",
   ],
   now: "Building Overseer in Rust and training Sky-AI from scratch.",
   social: {

@@ -52,7 +52,7 @@ export function Hero() {
             {...rise(0.28)}
           >
             Rust tooling, machine learning from scratch, a C++ game engine, and
-            years of reverse-engineering Fallout&nbsp;4.
+            Fallout&nbsp;4 reverse-engineering.
           </motion.p>
 
           <motion.div

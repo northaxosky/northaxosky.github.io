@@ -2,6 +2,9 @@ import type { Metadata } from "next";
 import { Archivo, JetBrains_Mono } from "next/font/google";
 import { MotionConfig } from "motion/react";
 import { ScrollProgress } from "@/components/scroll-progress";
+import { Background } from "@/components/background/background";
+import { BackgroundProvider } from "@/components/background/background-context";
+import { BackgroundToggle } from "@/components/background/background-toggle";
 import "./globals.css";
 
 const archivo = Archivo({
@@ -75,11 +78,15 @@ export default function RootLayout({
           <style>{`[data-reveal]{opacity:1 !important;transform:none !important;}`}</style>
         </noscript>
         <div className="grid-bg" aria-hidden="true" />
-        <div className="accent-seam" aria-hidden="true" />
-        <MotionConfig reducedMotion="user">
-          <ScrollProgress />
-          <div className="relative z-10">{children}</div>
-        </MotionConfig>
+        <BackgroundProvider>
+          <Background />
+          <div className="accent-seam" aria-hidden="true" />
+          <MotionConfig reducedMotion="user">
+            <ScrollProgress />
+            <div className="relative z-10">{children}</div>
+          </MotionConfig>
+          <BackgroundToggle />
+        </BackgroundProvider>
       </body>
     </html>
   );
