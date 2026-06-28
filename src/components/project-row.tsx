@@ -1,9 +1,15 @@
+"use client";
+
 import type { Project } from "@/data/portfolio";
 import { ArrowUpRight } from "lucide-react";
+import { motion } from "motion/react";
+import { staggerItem, CountUp } from "@/components/motion/primitives";
 
 export function ProjectRow({ project }: { project: Project }) {
   return (
-    <a
+    <motion.a
+      data-reveal
+      variants={staggerItem}
       href={project.github}
       target="_blank"
       rel="noopener noreferrer"
@@ -22,12 +28,12 @@ export function ProjectRow({ project }: { project: Project }) {
       </div>
 
       <div className="flex shrink-0 items-center gap-3 font-mono text-xs text-faint">
-        {project.stars != null && <span className="tnum">★ {project.stars}</span>}
+        {project.stars != null && <CountUp value={project.stars} prefix="★ " />}
         <ArrowUpRight
           size={15}
           className="transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-accent"
         />
       </div>
-    </a>
+    </motion.a>
   );
 }

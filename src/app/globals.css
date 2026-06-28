@@ -12,7 +12,7 @@
   /* ink */
   --color-ink: #ededec;
   --color-muted: #a6a6ad; /* body-muted, ≥ 4.5:1 on bg */
-  --color-faint: #76767e; /* metadata only, never body */
+  --color-faint: #8b8b94; /* metadata only, never body; AA on bg */
 
   /* lines */
   --color-line: rgba(255, 255, 255, 0.09);

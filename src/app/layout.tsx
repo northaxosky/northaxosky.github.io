@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { Archivo, JetBrains_Mono } from "next/font/google";
+import { MotionConfig } from "motion/react";
+import { ScrollProgress } from "@/components/scroll-progress";
 import "./globals.css";
 
 const archivo = Archivo({
@@ -54,9 +56,15 @@ export default function RootLayout({
       className={`${archivo.variable} ${jetbrainsMono.variable} antialiased`}
     >
       <body className="min-h-screen bg-bg text-ink font-sans">
+        <noscript>
+          <style>{`[data-reveal]{opacity:1 !important;transform:none !important;}`}</style>
+        </noscript>
         <div className="grid-bg" aria-hidden="true" />
         <div className="accent-seam" aria-hidden="true" />
-        <div className="relative z-10">{children}</div>
+        <MotionConfig reducedMotion="user">
+          <ScrollProgress />
+          <div className="relative z-10">{children}</div>
+        </MotionConfig>
       </body>
     </html>
   );

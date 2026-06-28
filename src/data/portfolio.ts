@@ -43,10 +43,10 @@ export const profile = {
   company: "Microsoft",
   location: "Seattle, WA",
   tagline:
-    "I build close to the metal — Rust tooling, machine learning from scratch, and game engines.",
+    "I build close to the metal: Rust tooling, machine learning from scratch, and game engines.",
   about: [
-    "I'm a software engineer at Microsoft. I studied computer science and interned twice at AWS before joining — but most of what I build lives outside the day job.",
-    "I like working close to the metal: developer tooling and CLIs in Rust, machine-learning systems written from scratch, a small C++ game engine, and years of reverse-engineering and modding Fallout 4. Most projects start from a practical itch — make something faster, automate a workflow, or learn a system deeply enough to bend it.",
+    "I'm a software engineer at Microsoft. I studied computer science and interned twice at AWS before joining. Most of what I build, though, lives outside the day job.",
+    "I like working close to the metal: developer tooling and CLIs in Rust, machine-learning systems written from scratch, a small C++ game engine, and years of reverse-engineering and modding Fallout 4. Most projects start from a practical itch: make something faster, automate a workflow, or learn a system deeply enough to bend it.",
   ],
   now: "Building Overseer in Rust and training Sky-AI from scratch.",
   social: {
@@ -87,7 +87,7 @@ export const projects: Project[] = [
     title: "Overseer",
     summary: "A Fallout 4 mod manager in Rust, on the Mod Organizer 2 model.",
     description:
-      "Non-destructive, crash-safe transactional deploys, real Plugins.txt load-order management, a setup health checker, and a ratatui TUI — all over a UI-agnostic core.",
+      "Non-destructive, crash-safe transactional deploys, real Plugins.txt load-order management, a setup health checker, and a ratatui TUI, all over a UI-agnostic core.",
     tags: ["Rust", "ratatui", "libloadorder"],
     github: "https://github.com/northaxosky/overseer",
     lane: "Systems & Tooling",
@@ -96,7 +96,7 @@ export const projects: Project[] = [
   },
   {
     title: "Sky-AI",
-    summary: "GPT-2 (124M), reproduced from scratch — then scaled.",
+    summary: "GPT-2 (124M), reproduced from scratch, then scaled.",
     description:
       "A clean-room GPT-2 that matches OpenAI bit-for-bit, plus a modern skyai stack scaling toward ~1.5B, on a hand-written training harness (Flash Attention, bf16, torch.compile).",
     tags: ["Python", "PyTorch", "LLMs"],
@@ -109,7 +109,7 @@ export const projects: Project[] = [
     title: "Sky-CLI",
     summary: "A Claude Code-style coding-agent CLI in Rust.",
     description:
-      "An LLM agent loop with tool calling, over OpenRouter — built well past the original challenge spec.",
+      "An LLM agent loop with tool calling, over OpenRouter, built well past the original challenge spec.",
     tags: ["Rust", "LLM", "agents"],
     github: "https://github.com/northaxosky/sky-cli",
     lane: "Systems & Tooling",
@@ -148,7 +148,7 @@ export const projects: Project[] = [
   {
     title: "Addictol",
     summary:
-      "Combined Fallout 4 engine fixes — performance, stability, and crash patches.",
+      "Combined Fallout 4 engine fixes: performance, stability, and crash patches.",
     description:
       "Built with the Dear Modding FO4 group. My most-starred project.",
     tags: ["C++", "F4SE"],
